@@ -28,8 +28,17 @@ logar conta com senha inválida
     Input Text      ${inputSenha}    ${senhaNovaConta}
     Click Button    ${btnAcessar}
 
+
+acessar menu esqueci minha senha
+    Click Element    ${btnEsqueciSenha}
+
+preencher email
+    Input Text       ${inputEmail}     ${emailContaCriada}
+    Sleep    1
+    Click Button    ${btnEnviar}
+
 sistema deve encaminhar a pagina logada
-    Sleep    3
+    Sleep    2
     Page Should Contain Element    ${txtHome}
 
 sistema deve exibir mensagem de email já utilizado
@@ -37,7 +46,7 @@ sistema deve exibir mensagem de email já utilizado
     Page Should Contain Element    ${txtEmailUtilizado}
 
 sistema deve encaminhar a pagina de login
-    Sleep    3
+    Sleep    2
     Page Should Contain Button    ${btnAcessar}
     Page Should Contain Element   ${txtLogin}
 
