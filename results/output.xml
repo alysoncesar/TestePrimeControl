@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.10.6 on win32)" generated="20231206 14:32:22.474" rpa="false" schemaversion="4">
+<suite id="s1" name="TestePrimeControl" source="C:\Users\Alysson\Desktop\TestePrimeControl">
+<suite id="s1-s1" name="Tests" source="C:\Users\Alysson\Desktop\TestePrimeControl\Tests">
+<suite id="s1-s1-s1" name="CadastrarClienteTest" source="C:\Users\Alysson\Desktop\TestePrimeControl\Tests\CadastrarClienteTest.robot">
+<test id="s1-s1-s1-t1" name="CT006 - Validar Pesquisa de Cliente recém cadastrado e exibição dos dados em tela" line="13">
+<kw name="Abrir Navegador" library="global" type="SETUP">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${BASE_URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20231206 14:32:22.787" level="INFO">Opening browser 'Chrome' to base url 'https://challenge.primecontrol.com.br/'.</msg>
+<status status="PASS" starttime="20231206 14:32:22.787" endtime="20231206 14:32:27.087"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20231206 14:32:27.087" endtime="20231206 14:32:27.212"/>
+</kw>
+<status status="PASS" starttime="20231206 14:32:22.786" endtime="20231206 14:32:27.212"/>
+</kw>
+<kw name="GIVEN logar conta já criada" library="global">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${btnLogin}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20231206 14:32:27.220" level="INFO">Clicking element 'xpath=//a[@href='/app']'.</msg>
+<status status="PASS" starttime="20231206 14:32:27.219" endtime="20231206 14:32:29.310"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${inputEmail}</arg>
+<arg>${emailContaCriada}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 14:32:29.311" level="INFO">Typing text 'alysoncesar99@gmail.com' into text field 'xpath=//input[@id="floatingInput"]'.</msg>
+<status status="PASS" starttime="20231206 14:32:29.310" endtime="20231206 14:32:29.402"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${inputSenha}</arg>
+<arg>${senhaContaCriada}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 14:32:29.403" level="INFO">Typing text '193746' into text field 'xpath=//input[@id="floatingPassword"]'.</msg>
+<status status="PASS" starttime="20231206 14:32:29.403" endtime="20231206 14:32:29.468"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>${btnAcessar}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20231206 14:32:29.469" level="INFO">Clicking button 'xpath=//button[text()="Acessar"]'.</msg>
+<status status="PASS" starttime="20231206 14:32:29.469" endtime="20231206 14:32:29.521"/>
+</kw>
+<status status="PASS" starttime="20231206 14:32:27.214" endtime="20231206 14:32:29.521"/>
+</kw>
+<kw name="WHEN pesquisar por cliente já cadastrado" library="CadastroClienteKey">
+<kw name="Sleep" library="BuiltIn">
+<arg>2</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20231206 14:32:31.534" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20231206 14:32:29.528" endtime="20231206 14:32:31.534"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${inputPesquisaCliente}</arg>
+<arg>${NomeCompleto}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 14:32:31.535" level="INFO">Typing text 'Alyson César Leles Coelho' into text field 'xpath=//input[@class='form-control inputSearch']'.</msg>
+<status status="PASS" starttime="20231206 14:32:31.534" endtime="20231206 14:32:31.634"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20231206 14:32:33.636" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20231206 14:32:31.635" endtime="20231206 14:32:33.636"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>${btnPesquisarCliente}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20231206 14:32:33.637" level="INFO">Clicking button 'xpath=//button[@id='button-addon2']'.</msg>
+<status status="PASS" starttime="20231206 14:32:33.636" endtime="20231206 14:32:33.683"/>
+</kw>
+<status status="PASS" starttime="20231206 14:32:29.524" endtime="20231206 14:32:33.684"/>
+</kw>
+<kw name="THEN sistema deve exibir dados cadastrados" library="CadastroClienteKey">
+<kw name="Sleep" library="BuiltIn">
+<arg>5</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20231206 14:32:38.696" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20231206 14:32:33.689" endtime="20231206 14:32:38.696"/>
+</kw>
+<kw name="Page Should Contain Element" library="SeleniumLibrary">
+<arg>${nomePesquisaCliente}</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<msg timestamp="20231206 14:32:38.704" level="INFO">Current page contains element 'xpath=//p[text()='Alyson César Leles Coelho']'.</msg>
+<status status="PASS" starttime="20231206 14:32:38.696" endtime="20231206 14:32:38.705"/>
+</kw>
+<kw name="Page Should Contain Element" library="SeleniumLibrary">
+<arg>${emailPesquisaCliente}</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<msg timestamp="20231206 14:32:38.716" level="INFO">Current page contains element 'xpath=//p[text()='alysoncesar99@gmail.com']'.</msg>
+<status status="PASS" starttime="20231206 14:32:38.705" endtime="20231206 14:32:38.716"/>
+</kw>
+<kw name="Page Should Contain Element" library="SeleniumLibrary">
+<arg>${telefonePesquisaCliente}</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<msg timestamp="20231206 14:32:38.725" level="INFO">Current page contains element 'xpath=//p[text()='61998280704']'.</msg>
+<status status="PASS" starttime="20231206 14:32:38.716" endtime="20231206 14:32:38.726"/>
+</kw>
+<status status="PASS" starttime="20231206 14:32:33.686" endtime="20231206 14:32:38.726"/>
+</kw>
+<status status="PASS" starttime="20231206 14:32:22.785" endtime="20231206 14:32:38.730"/>
+</test>
+<status status="PASS" starttime="20231206 14:32:22.511" endtime="20231206 14:32:38.731"/>
+</suite>
+<status status="PASS" starttime="20231206 14:32:22.506" endtime="20231206 14:32:38.733"/>
+</suite>
+<status status="PASS" starttime="20231206 14:32:22.479" endtime="20231206 14:32:38.735"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="TestePrimeControl">TestePrimeControl</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s1" name="Tests">TestePrimeControl.Tests</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s1-s1" name="CadastrarClienteTest">TestePrimeControl.Tests.CadastrarClienteTest</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
