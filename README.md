@@ -26,8 +26,8 @@ Adoto uma prática de desenvolvimento para evitar repetição excessiva de timeo
 Clicar Botão
 [arguments]  ${element}  ${value}
  Wait Until Keyword Succeeds    5s    1s  click button  ${element}  ${value}  
+```
 
-================================================
 Existe a pasta observações que está relacionado ao teste manual que houve algumas observações vistar na execução do mesmo. Enquanto na TesteAPI está os testes feitos direto no Postman como estava no documento e suas observações(acho melhor fazer com robot também kk)
 
 **OBS** necessário executar na ordem de cima pra baixo [SELECT>EDIT>DELETE>UPDATE] por usar o script para já armazenar valores de Ids para o mesmo
