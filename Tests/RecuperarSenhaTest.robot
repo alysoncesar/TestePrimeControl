@@ -9,3 +9,4 @@ CT011 - Recuperar senha de acesso
     AND acessar link de redefinição
     AND redefinir senha
     THEN sistema deve alterar senha do usuário 
+

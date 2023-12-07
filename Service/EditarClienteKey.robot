@@ -24,7 +24,8 @@ editar dados input
     Input Text    ${inputEditarTelefone}    61998286666
 
 Enviar imagem 
-    Choose File    ${inputEditarImg}                  C:\\Users\\Alysson\\Desktop\\TestePrimeControl\\mcQUEEN.png
+    ${dirFile}    Get File    C:\\Users\\Alysson\\Desktop\\TestePrimeControl\\mcQUEEN.png
+    Choose File    ${inputEditarImg}    ${dirFile}                      
 
 sistema retorna a home com alterações 
     Sleep    5

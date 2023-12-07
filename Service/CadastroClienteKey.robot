@@ -62,7 +62,8 @@ Preencher form text
     Input Text     ${inputComplemento}          ${Complemento}  
 
 Enviar imagem 
-    Choose File    ${inputImg}                  C:\\Users\\Alysson\\Desktop\\TestePrimeControl\\mcQUEEN.png
+    ${dirFile}    Get File    C:\\Users\\Alysson\\Desktop\\TestePrimeControl\\mcQUEEN.png
+    Choose File    ${inputImg}    ${dirFile}  
 
 preencher select
     Select From List by Value    ${inputPais}    ${pais}

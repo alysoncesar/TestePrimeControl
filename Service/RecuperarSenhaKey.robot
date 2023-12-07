@@ -34,14 +34,14 @@ acessar link de redefinição
     Wait Until Page Contains Element    ${msgPrime}    timeout=30s
     Click Element      ${msgPrime}
     Sleep    2
-    Click Element    xpath=//a[contains(@href, 'resetPassword')]
+    Click Element    ${linkReset}
       
 redefinir senha
     Sleep    5
-    Input Text    xpath=//input[@type='password']    ${senhaAlterarSenha} 
-    Click Button    xpath=//button[@type="submit"]
+    Input Text       ${inputSenhaReset}    ${senhaAlterarSenha} 
+    Click Button     ${btnSubmitReset}
     Sleep    5
 
 sistema deve alterar senha do usuário 
-    Page Should Contain Element    xpath=//*[contains(text(), 'Password changed')]
+    Page Should Contain Element    ${txtSenhaAlterada}
     Close All Browsers
