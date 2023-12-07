@@ -1,0 +1,637 @@
+{
+	"info": {
+		"_postman_id": "3edd079d-4c2d-4488-82dc-f12d16cb4971",
+		"name": "Teste Challenge Prime",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21374529"
+	},
+	"item": [
+		{
+			"name": "Listar Clientes",
+			"item": [
+				{
+					"name": "CT001 – resposta bem-sucedida",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//Estrutura esperada:{\"id\": \"STRING\", \"nome\": \"STRING\", \"email\": \"STRING\", \"fone\": \"INTEGER\", “fotoPerfil\": \"URL\"}\r",
+									"//Todos são String e nenhum vázio\r",
+									"// CT001 – Teste de resposta bem-sucedida (irá falhar por haver casos salvos vazios e em valor integer)\r",
+									"pm.test(\"Resposta bem-sucedida\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"    pm.response.to.be.json;\r",
+									"    \r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.be.an('array').that.is.not.empty;\r",
+									"\r",
+									"    if (jsonData.length > 0) {\r",
+									"        pm.globals.set('idClienteParaDeletar', jsonData[8].id);\r",
+									"        pm.globals.set('idClienteParaAlterar', jsonData[7].id);\r",
+									"    }\r",
+									"\r",
+									"    jsonData.forEach(function (client) {\r",
+									"        pm.expect(client).to.have.property('id');\r",
+									"        pm.expect(client).to.have.property('nome');\r",
+									"        pm.expect(client).to.have.property('email');\r",
+									"        pm.expect(client).to.have.property('fone');\r",
+									"        pm.expect(client).to.have.property('fotoPerfil');\r",
+									"        \r",
+									"        pm.expect(client.id).to.be.a('string').and.not.equal('');\r",
+									"        pm.expect(client.nome).to.be.a('string').and.not.equal('');\r",
+									"        pm.expect(client.email).to.be.a('string').and.not.equal('');\r",
+									"        pm.expect(client.fone).to.be.a('string').and.not.equal(''); // Permitindo string vazia para o campo fone\r",
+									"        pm.expect(client.fotoPerfil).to.be.a('string').and.not.equal('');\r",
+									"    });\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"QbrL0WMtgKtnqC8128r5\",\r\n    \"nome\": \"Alyson César Leles Coelho\",\r\n    \"email\": \"alysoncesar99@gmail.com\",\r\n    \"fone\": \"61998280704\",\r\n    \"fotoPerfil\": \"https://firebasestorage.googleapis.com/v0/b/pagina-teste-prime.appspot.com/o/carros.png?alt=media&token=9295a7ed-050e-489f-93bc-af4c3630191e\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api-challenge.primecontrol.com.br/listClients",
+							"protocol": "https",
+							"host": [
+								"api-challenge",
+								"primecontrol",
+								"com",
+								"br"
+							],
+							"path": [
+								"listClients"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CT002 – validação dos campos",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//Estrutura esperada:{\"id\": \"STRING\", \"nome\": \"STRING\", \"email\": \"STRING\", \"fone\": \"INTEGER\", “fotoPerfil\": \"URL\"}\r",
+									"//Todos são String e nenhum vázio\r",
+									"\r",
+									"// CT002 – Teste de validação dos campos (irá falhar por haver casos salvos vazios e em valor integer)\r",
+									"pm.test(\"Validação dos campos\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"    pm.response.to.be.json;\r",
+									"\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.be.an('array').that.is.not.empty;\r",
+									"\r",
+									"    jsonData.forEach(function (client) {\r",
+									"        pm.expect(client).to.have.property('id');\r",
+									"        pm.expect(client).to.have.property('nome');\r",
+									"        pm.expect(client).to.have.property('email');\r",
+									"        pm.expect(client).to.have.property('fone');\r",
+									"        pm.expect(client).to.have.property('fotoPerfil');\r",
+									"        \r",
+									"        pm.expect(client.id).to.be.a('string');\r",
+									"        pm.expect(client.nome).to.be.a('string');\r",
+									"        pm.expect(client.email).to.be.a('string');\r",
+									"        pm.expect(client.fone).to.be.a('string');\r",
+									"        pm.expect(client.fotoPerfil).to.be.a('string');\r",
+									"    });\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"QbrL0WMtgKtnqC8128r5\",\r\n    \"nome\": \"Alyson César Leles Coelho\",\r\n    \"email\": \"alysoncesar99@gmail.com\",\r\n    \"fone\": \"61998280704\",\r\n    \"fotoPerfil\": \"https://firebasestorage.googleapis.com/v0/b/pagina-teste-prime.appspot.com/o/carros.png?alt=media&token=9295a7ed-050e-489f-93bc-af4c3630191e\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api-challenge.primecontrol.com.br/listClients",
+							"protocol": "https",
+							"host": [
+								"api-challenge",
+								"primecontrol",
+								"com",
+								"br"
+							],
+							"path": [
+								"listClients"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CT003 –  validação de endpoint",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//Estrutura esperada:{\"id\": \"STRING\", \"nome\": \"STRING\", \"email\": \"STRING\", \"fone\": \"INTEGER\", “fotoPerfil\": \"URL\"}\r",
+									"//Todos são String e nenhum vázio\r",
+									"\r",
+									"// CT003 – Teste de validação de endpoint\r",
+									"pm.test(\"Validação de endpoint inexistente\", function () {\r",
+									"    pm.sendRequest({\r",
+									"        url: 'https://api-challenge.primecontrol.com.br/inexistente',\r",
+									"        method: 'GET'\r",
+									"    }, function (err, response) {\r",
+									"        pm.expect(response).to.have.status(404);\r",
+									"    });\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"QbrL0WMtgKtnqC8128r5\",\r\n    \"nome\": \"Alyson César Leles Coelho\",\r\n    \"email\": \"alysoncesar99@gmail.com\",\r\n    \"fone\": \"61998280704\",\r\n    \"fotoPerfil\": \"https://firebasestorage.googleapis.com/v0/b/pagina-teste-prime.appspot.com/o/carros.png?alt=media&token=9295a7ed-050e-489f-93bc-af4c3630191e\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api-challenge.primecontrol.com.br/listClients",
+							"protocol": "https",
+							"host": [
+								"api-challenge",
+								"primecontrol",
+								"com",
+								"br"
+							],
+							"path": [
+								"listClients"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Adicionar Clientes",
+			"item": [
+				{
+					"name": "CT001 - adição bem-sucedida",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//agora quebrei a cabeça kkkkkk a API estava addCliente no documento.\r",
+									"// CT001 – Teste de adição bem-sucedida\r",
+									"pm.test(\"Adição de cliente bem-sucedida\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"    pm.response.to.be.json;\r",
+									"\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.have.property('message', 'Cliente cadastrado com sucesso!');\r",
+									"    pm.expect(jsonData).to.have.property('id').that.is.a('string').and.not.equal('');\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"Mr.AlvinEffertz\",\r\n    \"email\": \"Mr.AlvinEffertz@teste.com\",\r\n    \"fone\": \"71997752956\",\r\n    \"fotoPerfil\": \"http://placeimg.com/640/480/people\",\r\n    \"cep\": \"71996350\",\r\n    \"endereco\": \"TST teste 005\",\r\n    \"complemento\": \"teste\",\r\n    \"pais\": \"br\",\r\n    \"genero\": \"Masculino\",\r\n    \"ferramentas\": [\r\n        \"RobotFramework\"\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api-challenge.primecontrol.com.br/addClient",
+							"protocol": "https",
+							"host": [
+								"api-challenge",
+								"primecontrol",
+								"com",
+								"br"
+							],
+							"path": [
+								"addClient"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CT002 - campos obrigatórios",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// CT002 – Teste de campos obrigatórios\r",
+									"pm.test(\"Campos obrigatórios\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"    pm.response.to.be.json;\r",
+									"\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.have.property('message', 'Informe o nome');\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"\",\r\n    \"email\": \"\",\r\n    \"fone\": \"\",\r\n    \"fotoPerfil\": \"\",\r\n    \"cep\": \"\",\r\n    \"endereco\": \"\",\r\n    \"complemento\": \"\",\r\n    \"pais\": \"\",\r\n    \"genero\": \"\",\r\n    \"ferramentas\": [\r\n        \"\"\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api-challenge.primecontrol.com.br/addClient",
+							"protocol": "https",
+							"host": [
+								"api-challenge",
+								"primecontrol",
+								"com",
+								"br"
+							],
+							"path": [
+								"addClient"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CT003 - validação do e-mail e URL do perfil",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// CT003 – Teste de validação do e-mail e URL do perfil\r",
+									"pm.test(\"Validação de e-mail e URL do perfil\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"    pm.response.to.be.json;\r",
+									"\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.have.property('message', 'E-mail em formato inválido.');\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"Mr.AlvinEffertz\",\r\n    \"email\": \"Mr.AlvinEffertz.com\",\r\n    \"fone\": \"71997752956\",\r\n    \"fotoPerfil\": \"\",\r\n    \"cep\": \"71996350\",\r\n    \"endereco\": \"TST teste 005\",\r\n    \"complemento\": \"teste\",\r\n    \"pais\": \"br\",\r\n    \"genero\": \"Masculino\",\r\n    \"ferramentas\": [\r\n        \"RobotFramework\"\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api-challenge.primecontrol.com.br/addClient",
+							"protocol": "https",
+							"host": [
+								"api-challenge",
+								"primecontrol",
+								"com",
+								"br"
+							],
+							"path": [
+								"addClient"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Deletar Clientes",
+			"item": [
+				{
+					"name": "CT001 – exclusão bem-sucedida",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// CT001 – Teste de exclusão bem-sucedida\r",
+									"pm.test(\"Exclusão bem-sucedida\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"    pm.response.to.be.json;\r",
+									"\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.have.property('message', 'Cliente excluído com sucesso!');\r",
+									"    \r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://api-challenge.primecontrol.com.br/deleteClient/{{idClienteParaDeletar}}",
+							"protocol": "https",
+							"host": [
+								"api-challenge",
+								"primecontrol",
+								"com",
+								"br"
+							],
+							"path": [
+								"deleteClient",
+								"{{idClienteParaDeletar}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CT002 - cliente não encontrado",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// CT002 – Teste de cliente não encontrado\r",
+									"pm.test(\"cliente não encontrado\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"    pm.response.to.be.json;\r",
+									"\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.have.property('message', 'Cliente não encontrado.');\r",
+									"    \r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://api-challenge.primecontrol.com.br/deleteClient/testeInvalido",
+							"protocol": "https",
+							"host": [
+								"api-challenge",
+								"primecontrol",
+								"com",
+								"br"
+							],
+							"path": [
+								"deleteClient",
+								"testeInvalido"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CT003 – Teste de exclusão sem ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// CT003 – Teste de exclusão sem ID\r",
+									"pm.test(\"Exclusão sem ID\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"    \r",
+									"    var responseBody = pm.response.text();\r",
+									"    pm.expect(responseBody).to.include('Cannot DELETE /deleteClient');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://api-challenge.primecontrol.com.br/deleteClient/",
+							"protocol": "https",
+							"host": [
+								"api-challenge",
+								"primecontrol",
+								"com",
+								"br"
+							],
+							"path": [
+								"deleteClient",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Atualizar Clientes",
+			"item": [
+				{
+					"name": "CT001 – Teste de atualização bem-sucedida",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// CT001 – Teste de atualização bem-sucedida\r",
+									"pm.test(\"Atualização bem-sucedida\", function () {\r",
+									"    pm.expect(pm.response.json()).to.have.property('message', 'Cliente atualizado com sucesso!');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"joao teste\",\r\n    \"email\": \"teste@gmail.com\",\r\n    \"fone\": \"33218181\",\r\n    \"fotoPerfil\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api-challenge.primecontrol.com.br/updateClient/{{idClienteParaAlterar}}",
+							"protocol": "https",
+							"host": [
+								"api-challenge",
+								"primecontrol",
+								"com",
+								"br"
+							],
+							"path": [
+								"updateClient",
+								"{{idClienteParaAlterar}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CT002 – Teste de cliente não encontrado",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// CT002 – Teste de cliente não encontrado\r",
+									"pm.test(\"Cliente não encontrado\", function () {\r",
+									"    pm.expect(pm.response.json()).to.have.property('message', 'Cliente não encontrado.');\r",
+									"});\r",
+									"\r",
+									"//retornarndo Mensagem diferente \r",
+									"//{\r",
+									"//    \"message\": \"Error updating client: 5 NOT_FOUND: No document to update: projects/pagina-teste-prime/databases/(default)/documents/clientes/testeInvalido\"\r",
+									"//}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"joao teste\",\r\n    \"email\": \"\",\r\n    \"fone\": \"33218181\",\r\n    \"fotoPerfil\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api-challenge.primecontrol.com.br/updateClient/testeInvalido",
+							"protocol": "https",
+							"host": [
+								"api-challenge",
+								"primecontrol",
+								"com",
+								"br"
+							],
+							"path": [
+								"updateClient",
+								"testeInvalido"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CT003 – Teste de atualização sem campos",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// CT003 – Teste de atualização sem campos\r",
+									"pm.test(\"Atualização sem campos\", function () {\r",
+									"    pm.expect(pm.response.json()).to.have.property('message', 'Informe ao menos um campo para atualizar');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"\",\r\n    \"email\": \"\",\r\n    \"fone\": \"\",\r\n    \"fotoPerfil\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api-challenge.primecontrol.com.br/updateClient/{{idClienteParaAlterar}}",
+							"protocol": "https",
+							"host": [
+								"api-challenge",
+								"primecontrol",
+								"com",
+								"br"
+							],
+							"path": [
+								"updateClient",
+								"{{idClienteParaAlterar}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

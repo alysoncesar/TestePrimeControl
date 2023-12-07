@@ -1,0 +1,8 @@
+Como solicitado foi feito os testes direto do postman e foi observado os seguintes problemas.
+
+na API https://api-challenge.primecontrol.com.br/listClients está tendo alguns problemas no retorno quando se baseando pelo documento recebido por todos os campos terem 
+de estar presentes e ser String, o que não ocorre em alguns casos aonde foi adicionado e alterado para retirar, está impactando no retorno desta API.
+Como visto no print 1, alguns valores de telefone estão salvos como Integer e o esperado pelo documento seria String
+
+na API https://api-challenge.primecontrol.com.br/updateClient/{{id}} está tendo um retorno inesperado quando se baseia no documento aonde informa que o retorno
+seria "message": "Cliente não encontrado." e o retorno real é "message": "Error updating client: 5 NOT_FOUND: No document to update: projects/pagina-teste-prime/databases/(default)/documents/clientes/testeInvalido" como pode ser visto no print2
