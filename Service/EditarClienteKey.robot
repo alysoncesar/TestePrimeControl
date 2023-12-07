@@ -3,13 +3,15 @@ Resource    ../Resource/global.robot
 Resource    ../Common/editarClientePath.robot
 
 *** Variables ***
-
+${NomeEditar}         Cadastro Teste Finalizado
+${emailEditar}        TesteCadastroFinalizado@testado.com 
+${telefoneEditar}     61998286666
 *** keywords ***
  
 acessar ação de edição do cliente
-    Sleep    5
-    Click Element    ${btnEditar}
     Sleep    2
+    Click Element    ${btnEditar}
+    Sleep    1
 
 editar dados do cliente
     editar dados input 
@@ -17,13 +19,13 @@ editar dados do cliente
     Click Button    ${btnSalvar}
 
 editar dados input
-    Input Text    ${inputEditarNome}    Cadastro Teste Finalizado
-    Input Text    ${inputEditarEmail}    TesteCadastroFinalizado@testado.com 
-    Input Text    ${inputEditarTelefone}    61998286666
+    Input Text      ${inputEditarNome}        ${NomeEditar} 
+    Input Text      ${inputEditarEmail}       ${emailEditar} 
+    Input Text      ${inputEditarTelefone}    ${telefoneEditar}
 
 Enviar imagem 
-    Choose File    ${inputEditarImg}    ${imgTeste}
+    Choose File    ${inputEditarImg}          ${imgTeste}
 
 sistema retorna a home com alterações 
-    Sleep    5
-    Page Should Contain    TesteCadastroFinalizado@testado.com 
+    Sleep    3
+    Page Should Contain                       ${emailEditar} 

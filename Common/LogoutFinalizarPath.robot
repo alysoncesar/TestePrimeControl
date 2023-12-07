@@ -17,3 +17,5 @@ ${inputEmailEnviar}             xpath=//input[@id='email']
 ${inputLinkGitEnviar}           xpath=//input[@id='githubLink']
 ${inputNomeRecruiterEnviar}     xpath=//input[@id='nomeRecrutador']
 ${btnSalvar}                    xpath=//button[text()='Salvar']
+
+${tituloHome}                   xpath=//h1[text()='Gestão de Clientes']

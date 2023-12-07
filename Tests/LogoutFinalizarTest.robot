@@ -14,4 +14,4 @@ CT012 - Validar preenchimento “Informações do Candidato” ao clicar em “F
     GIVEN logar conta já criada
     WHEN acessar finalizar teste
     AND preencher dados
-    THEN 
+    THEN sistema deve salvar dados

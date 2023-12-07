@@ -6,15 +6,16 @@ Library           OperatingSystem
 Library    String
 
 *** Variables ***
-${BROWSER}        Chrome
-${BASE_URL}       https://challenge.primecontrol.com.br/
+${BROWSER}                 Chrome
+${BASE_URL}                https://challenge.primecontrol.com.br/
+
 #LOGAR CONTA
-${emailContaCriada}    alysoncesar99@gmail.com
-${senhaContaCriada}    193746
+${emailContaCriada}        alysoncesar99@gmail.com
+${senhaContaCriada}        193746
 
 #CRIAR CONTA
-${emailCriarConta}=    ${EMPTY}    
-${senhaNovaConta}    123456789
+${emailCriarConta}=        ${EMPTY}    
+${senhaNovaConta}          123456789
 
 #DADOS CLIENTE CADASTRO
 ${NomeCompleto}            Alyson César Leles Coelho
@@ -29,7 +30,7 @@ ${imgTeste}                ${EXECDIR}\\feature\\carros.png
 
 *** Keywords ***
 Abrir Navegador
-    Open Browser    ${BASE_URL}    ${BROWSER}    alias=prime
+    Open Browser           ${BASE_URL}    ${BROWSER}    alias=prime
     randomizar email
     Maximize Browser Window
     
@@ -37,13 +38,12 @@ Fechar Navegador
     Close Browser  
 
 logar conta já criada
-    click Element    ${btnLogin}
-    input text      ${inputEmail}    ${emailContaCriada}
-    Input Text      ${inputSenha}    ${senhaContaCriada}
-    Click Button    ${btnAcessar}
+    click Element           ${btnLogin}
+    input text              ${inputEmail}    ${emailContaCriada}
+    Input Text              ${inputSenha}    ${senhaContaCriada}
+    Click Button            ${btnAcessar}
 
 randomizar email
     ${randomizarString}=    Generate Random String    8
-    ${emailRandom}=    Set Variable    ${randomizarString}@teste.com
-    Set Global Variable    ${emailCriarConta}    ${emailRandom}
-    Log    ${emailCriarConta}
+    ${emailRandom}=         Set Variable    ${randomizarString}@teste.com
+    Set Global Variable     ${emailCriarConta}    ${emailRandom}
