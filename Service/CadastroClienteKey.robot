@@ -61,9 +61,8 @@ Preencher form text
     Input Text     ${inputEndereco}             ${Endereco}   
     Input Text     ${inputComplemento}          ${Complemento}  
 
-Enviar imagem 
-    ${dirFile}    Get File    C:\\Users\\Alysson\\Desktop\\TestePrimeControl\\mcQUEEN.png
-    Choose File    ${inputImg}    ${dirFile}  
+Enviar imagem  
+    Choose File    ${inputImg}    ${imgTeste}
 
 preencher select
     Select From List by Value    ${inputPais}    ${pais}
@@ -94,6 +93,4 @@ sistema deve exibir dados cadastrados
 sistema exibe lista de cliente com o cadastrado
     Sleep    5
     Page Should Contain    ${Email}   
-
-sistema deve exibir mensagem de email inválido
-    
+  

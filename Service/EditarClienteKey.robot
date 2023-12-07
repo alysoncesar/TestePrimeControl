@@ -12,9 +12,7 @@ acessar ação de edição do cliente
     Sleep    2
 
 editar dados do cliente
-    editar dados input   
-    Click Button    ${btnExcluirImg}
-    Sleep    2
+    editar dados input 
     Enviar imagem
     Click Button    ${btnSalvar}
 
@@ -24,8 +22,7 @@ editar dados input
     Input Text    ${inputEditarTelefone}    61998286666
 
 Enviar imagem 
-    ${dirFile}    Get File    C:\\Users\\Alysson\\Desktop\\TestePrimeControl\\mcQUEEN.png
-    Choose File    ${inputEditarImg}    ${dirFile}                      
+    Choose File    ${inputEditarImg}    ${imgTeste}
 
 sistema retorna a home com alterações 
     Sleep    5

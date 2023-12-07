@@ -1,10 +1,12 @@
 *** Settings ***
 Resource    ../Resource/global.robot
-Resource    ../Common/CriarContaLoginPath.robot
 
 *** Variables ***
 
+
 *** keywords ***
+
+
 
 acessou pagina principal
     Sleep    1

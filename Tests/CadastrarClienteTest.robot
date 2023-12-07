@@ -16,11 +16,6 @@ CT006 - Validar Pesquisa de Cliente recém cadastrado e exibição dos dados em 
     WHEN pesquisar por cliente já cadastrado
     THEN sistema deve exibir dados cadastrados 
 
-CT008 - Validar Cadastro de Clientes com Email inválido na aba Perfil
-    GIVEN logar conta já criada
-    WHEN cadastrar cliente com email inválido
-    THEN sistema deve exibir mensagem de email inválido
-
 CT009 - Validar preenchimento de campos obrigatórios na aba Perfil
     GIVEN logar conta já criada
     WHEN cadastrar cliente faltando dados
