@@ -7,7 +7,9 @@ CT006 – Validar Pesquisa de Cliente recém cadastrado e exibição dos dados e
 CT007 – Editar Cliente através do botão na listagem de clientes x
 CT009 – Validar preenchimento de campos obrigatórios na aba Perfil x
 CT010 – Realizar Logout com sucesso ao clicar em “Finalizar” x
-CT011 – Recuperar senha de acesso x
-CT012 – Validar preenchimento “Informações do Candidato” ao clicar em “Finalizar e Enviar” x
+
 
 CT008 – Validar Cadastro de Clientes com Email inválido na aba Perfil 
+CT011 – Recuperar senha de acesso 
+
+CT012 – Validar preenchimento “Informações do Candidato” ao clicar em “Finalizar e Enviar”  SÓ QUANDO ACABAR

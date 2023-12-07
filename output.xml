@@ -1,147 +1,208 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 6.1.1 (Python 3.10.6 on win32)" generated="20231206 16:26:32.292" rpa="false" schemaversion="4">
-<suite id="s1" name="LogoutFinalizarTest" source="c:\Users\Alysson\Desktop\TestePrimeControl\Tests\LogoutFinalizarTest.robot">
-<test id="s1-t1" name="CT012 - Validar preenchimento “Informações do Candidato” ao clicar em “Finalizar e Enviar”" line="13">
-<kw name="Abrir Navegador" library="global" type="SETUP">
+<robot generator="Robot 6.1.1 (Python 3.10.6 on win32)" generated="20231206 21:09:10.257" rpa="false" schemaversion="4">
+<suite id="s1" name="RecuperarSenhaTest" source="c:\Users\Alysson\Desktop\TestePrimeControl\Tests\RecuperarSenhaTest.robot">
+<test id="s1-t1" name="CT011 - Recuperar senha de acesso" line="6">
+<kw name="GIVEN acessar menu esqueci minha senha" library="RecuperarSenhaKey">
+<kw name="criar email temporario" library="RecuperarSenhaKey">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${BASE_URL_FAKE_EMAIL}</arg>
+<arg>${BROWSER}</arg>
+<arg>alias=email</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20231206 21:09:10.497" level="INFO">Opening browser 'Chrome' to base url 'https://www.invertexto.com/gerador-email-temporario'.</msg>
+<status status="PASS" starttime="20231206 21:09:10.497" endtime="20231206 21:09:14.659"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20231206 21:09:16.673" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20231206 21:09:14.660" endtime="20231206 21:09:16.673"/>
+</kw>
+<kw name="Get Element Attribute" library="SeleniumLibrary">
+<var>${value}</var>
+<arg>xpath=//input[@id='email-input']</arg>
+<arg>value</arg>
+<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
+<msg timestamp="20231206 21:09:16.695" level="INFO">${value} = doreen2071@uorak.com</msg>
+<status status="PASS" starttime="20231206 21:09:16.673" endtime="20231206 21:09:16.695"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${emailAlterarSenha}</arg>
+<arg>${value}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20231206 21:09:16.696" level="INFO">${emailAlterarSenha} = doreen2071@uorak.com</msg>
+<status status="PASS" starttime="20231206 21:09:16.695" endtime="20231206 21:09:16.696"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${emailAlterarSenha}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20231206 21:09:16.696" endtime="20231206 21:09:16.696"/>
+</kw>
+<status status="PASS" starttime="20231206 21:09:10.496" endtime="20231206 21:09:16.696"/>
+</kw>
+<kw name="criar conta com fake email" library="RecuperarSenhaKey">
+<kw name="Abrir Navegador" library="global">
 <kw name="Open Browser" library="SeleniumLibrary">
 <arg>${BASE_URL}</arg>
 <arg>${BROWSER}</arg>
+<arg>alias=prime</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<msg timestamp="20231206 16:26:32.704" level="INFO">Opening browser 'Chrome' to base url 'https://challenge.primecontrol.com.br/'.</msg>
-<status status="PASS" starttime="20231206 16:26:32.703" endtime="20231206 16:26:35.811"/>
+<msg timestamp="20231206 21:09:16.697" level="INFO">Opening browser 'Chrome' to base url 'https://challenge.primecontrol.com.br/'.</msg>
+<status status="PASS" starttime="20231206 21:09:16.696" endtime="20231206 21:09:20.348"/>
 </kw>
 <kw name="Maximize Browser Window" library="SeleniumLibrary">
 <doc>Maximizes current browser window.</doc>
-<status status="PASS" starttime="20231206 16:26:35.811" endtime="20231206 16:26:35.937"/>
+<status status="PASS" starttime="20231206 21:09:20.348" endtime="20231206 21:09:20.470"/>
 </kw>
-<status status="PASS" starttime="20231206 16:26:32.702" endtime="20231206 16:26:35.937"/>
+<status status="PASS" starttime="20231206 21:09:16.696" endtime="20231206 21:09:20.471"/>
 </kw>
-<kw name="GIVEN logar conta já criada" library="global">
 <kw name="Click Element" library="SeleniumLibrary">
-<arg>${btnLogin}</arg>
+<arg>${btnNovaConta}</arg>
 <doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20231206 16:26:35.939" level="INFO">Clicking element 'xpath=//a[@href='/app']'.</msg>
-<status status="PASS" starttime="20231206 16:26:35.938" endtime="20231206 16:26:38.686"/>
+<msg timestamp="20231206 21:09:20.471" level="INFO">Clicking element 'xpath=//a[@href='/app/novaconta']'.</msg>
+<status status="PASS" starttime="20231206 21:09:20.471" endtime="20231206 21:09:21.477"/>
 </kw>
 <kw name="Input Text" library="SeleniumLibrary">
 <arg>${inputEmail}</arg>
-<arg>${emailContaCriada}</arg>
+<arg>${emailAlterarSenha}</arg>
 <doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<msg timestamp="20231206 16:26:38.687" level="INFO">Typing text 'alysoncesar99@gmail.com' into text field 'xpath=//input[@id="floatingInput"]'.</msg>
-<status status="PASS" starttime="20231206 16:26:38.686" endtime="20231206 16:26:38.792"/>
+<msg timestamp="20231206 21:09:21.478" level="INFO">Typing text 'doreen2071@uorak.com' into text field 'xpath=//input[@id="floatingInput"]'.</msg>
+<status status="PASS" starttime="20231206 21:09:21.478" endtime="20231206 21:09:21.560"/>
 </kw>
 <kw name="Input Text" library="SeleniumLibrary">
 <arg>${inputSenha}</arg>
-<arg>${senhaContaCriada}</arg>
+<arg>${senhaAlterarSenha}</arg>
 <doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<msg timestamp="20231206 16:26:38.793" level="INFO">Typing text '193746' into text field 'xpath=//input[@id="floatingPassword"]'.</msg>
-<status status="PASS" starttime="20231206 16:26:38.792" endtime="20231206 16:26:38.858"/>
+<msg timestamp="20231206 21:09:21.561" level="INFO">Typing text '193746' into text field 'xpath=//input[@id="floatingPassword"]'.</msg>
+<status status="PASS" starttime="20231206 21:09:21.560" endtime="20231206 21:09:21.625"/>
 </kw>
 <kw name="Click Button" library="SeleniumLibrary">
-<arg>${btnAcessar}</arg>
+<arg>${btnCriarConta}</arg>
 <doc>Clicks the button identified by ``locator``.</doc>
-<msg timestamp="20231206 16:26:38.860" level="INFO">Clicking button 'xpath=//button[text()="Acessar"]'.</msg>
-<status status="PASS" starttime="20231206 16:26:38.860" endtime="20231206 16:26:38.914"/>
+<msg timestamp="20231206 21:09:21.625" level="INFO">Clicking button 'xpath=//button[text()="Criar conta"]'.</msg>
+<status status="PASS" starttime="20231206 21:09:21.625" endtime="20231206 21:09:21.674"/>
 </kw>
-<status status="PASS" starttime="20231206 16:26:35.938" endtime="20231206 16:26:38.914"/>
+<status status="PASS" starttime="20231206 21:09:16.696" endtime="20231206 21:09:21.674"/>
 </kw>
-<kw name="WHEN acessar finalizar teste" library="LogoutFinalizarKey">
 <kw name="Sleep" library="BuiltIn">
-<arg>2</arg>
+<arg>3</arg>
 <doc>Pauses the test executed for the given time.</doc>
-<msg timestamp="20231206 16:26:40.928" level="INFO">Slept 2 seconds</msg>
-<status status="PASS" starttime="20231206 16:26:38.917" endtime="20231206 16:26:40.930"/>
+<msg timestamp="20231206 21:09:24.679" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20231206 21:09:21.674" endtime="20231206 21:09:24.679"/>
 </kw>
 <kw name="Click Element" library="SeleniumLibrary">
-<arg>${btnFinalizar}</arg>
+<arg>${btnEsqueciSenha}</arg>
 <doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20231206 16:26:40.931" level="INFO">Clicking element 'xpath=//a[@href="/app/home"]'.</msg>
-<status status="PASS" starttime="20231206 16:26:40.930" endtime="20231206 16:26:40.976"/>
+<msg timestamp="20231206 21:09:24.679" level="INFO">Clicking element 'xpath=//a[@href="/app/resetsenha"]'.</msg>
+<status status="PASS" starttime="20231206 21:09:24.679" endtime="20231206 21:09:24.719"/>
+</kw>
+<status status="PASS" starttime="20231206 21:09:10.496" endtime="20231206 21:09:24.719"/>
+</kw>
+<kw name="WHEN enviar redefinição de senha" library="RecuperarSenhaKey">
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${inputEmail}</arg>
+<arg>${emailAlterarSenha}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 21:09:24.721" level="INFO">Typing text 'doreen2071@uorak.com' into text field 'xpath=//input[@id="floatingInput"]'.</msg>
+<status status="PASS" starttime="20231206 21:09:24.720" endtime="20231206 21:09:24.781"/>
 </kw>
 <kw name="Sleep" library="BuiltIn">
-<arg>2</arg>
+<arg>1</arg>
 <doc>Pauses the test executed for the given time.</doc>
-<msg timestamp="20231206 16:26:42.982" level="INFO">Slept 2 seconds</msg>
-<status status="PASS" starttime="20231206 16:26:40.977" endtime="20231206 16:26:42.982"/>
+<msg timestamp="20231206 21:09:25.799" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20231206 21:09:24.783" endtime="20231206 21:09:25.799"/>
 </kw>
 <kw name="Click Button" library="SeleniumLibrary">
 <arg>${btnEnviar}</arg>
 <doc>Clicks the button identified by ``locator``.</doc>
-<msg timestamp="20231206 16:26:42.983" level="INFO">Clicking button 'xpath=//button[text()="Enviar"]'.</msg>
-<status status="PASS" starttime="20231206 16:26:42.982" endtime="20231206 16:26:43.031"/>
+<msg timestamp="20231206 21:09:25.800" level="INFO">Clicking button 'xpath=//button[text()="Enviar"]'.</msg>
+<status status="PASS" starttime="20231206 21:09:25.799" endtime="20231206 21:09:25.843"/>
 </kw>
-<status status="PASS" starttime="20231206 16:26:38.916" endtime="20231206 16:26:43.032"/>
+<status status="PASS" starttime="20231206 21:09:24.720" endtime="20231206 21:09:25.843"/>
 </kw>
-<kw name="AND preencher dados" library="LogoutFinalizarKey">
-<kw name="Input Text" library="SeleniumLibrary">
-<arg>${inputNomeEnviar}</arg>
-<arg>Alyson César</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<msg timestamp="20231206 16:26:43.033" level="INFO">Typing text 'Alyson César' into text field 'xpath=//input[@id='nome']'.</msg>
-<status status="PASS" starttime="20231206 16:26:43.033" endtime="20231206 16:26:43.107"/>
+<kw name="AND acessar link de redefinição" library="RecuperarSenhaKey">
+<kw name="Switch Browser" library="SeleniumLibrary">
+<arg>email</arg>
+<doc>Switches between active browsers using ``index_or_alias``.</doc>
+<status status="PASS" starttime="20231206 21:09:25.844" endtime="20231206 21:09:25.844"/>
 </kw>
-<kw name="Input Text" library="SeleniumLibrary">
-<arg>${inputTelefoneEnviar}</arg>
-<arg>61998280704</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<msg timestamp="20231206 16:26:43.108" level="INFO">Typing text '61998280704' into text field 'xpath=//input[@id='telefone']'.</msg>
-<status status="PASS" starttime="20231206 16:26:43.107" endtime="20231206 16:26:43.174"/>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>xpath=(//tbody/tr)[1]</arg>
+<arg>timeout=30s</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20231206 21:09:25.844" endtime="20231206 21:09:33.460"/>
 </kw>
-<kw name="Input Text" library="SeleniumLibrary">
-<arg>${inputEmailEnviar}</arg>
-<arg>alysoncesar99@gmail.com</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<msg timestamp="20231206 16:26:43.175" level="INFO">Typing text 'alysoncesar99@gmail.com' into text field 'xpath=//input[@id='email']'.</msg>
-<status status="PASS" starttime="20231206 16:26:43.174" endtime="20231206 16:26:43.252"/>
-</kw>
-<kw name="Input Text" library="SeleniumLibrary">
-<arg>${inputLinkGitEnviar}</arg>
-<arg>teste</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<msg timestamp="20231206 16:26:43.252" level="INFO">Typing text 'teste' into text field 'xpath=//input[@id='githubLink']'.</msg>
-<status status="PASS" starttime="20231206 16:26:43.252" endtime="20231206 16:26:43.310"/>
-</kw>
-<kw name="Input Text" library="SeleniumLibrary">
-<arg>${inputNomeRecruiterEnviar}</arg>
-<arg>Livia</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<msg timestamp="20231206 16:26:43.311" level="INFO">Typing text 'Livia' into text field 'xpath=//input[@id='nomeRecrutador']'.</msg>
-<status status="PASS" starttime="20231206 16:26:43.311" endtime="20231206 16:26:43.372"/>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>xpath=(//tbody/tr)[1]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20231206 21:09:33.460" level="INFO">Clicking element 'xpath=(//tbody/tr)[1]'.</msg>
+<status status="PASS" starttime="20231206 21:09:33.460" endtime="20231206 21:09:33.496"/>
 </kw>
 <kw name="Sleep" library="BuiltIn">
 <arg>2</arg>
 <doc>Pauses the test executed for the given time.</doc>
-<msg timestamp="20231206 16:26:45.379" level="INFO">Slept 2 seconds</msg>
-<status status="PASS" starttime="20231206 16:26:43.373" endtime="20231206 16:26:45.379"/>
+<msg timestamp="20231206 21:09:35.506" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20231206 21:09:33.497" endtime="20231206 21:09:35.506"/>
 </kw>
-<status status="PASS" starttime="20231206 16:26:43.032" endtime="20231206 16:26:45.379"/>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>xpath=//a[contains(@href, 'resetPassword')]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20231206 21:09:35.507" level="INFO">Clicking element 'xpath=//a[contains(@href, 'resetPassword')]'.</msg>
+<status status="PASS" starttime="20231206 21:09:35.506" endtime="20231206 21:09:35.864"/>
 </kw>
-<kw name="THEN">
-<msg timestamp="20231206 16:26:45.382" level="FAIL">No keyword with name 'THEN' found.</msg>
-<status status="FAIL" starttime="20231206 16:26:45.382" endtime="20231206 16:26:45.383"/>
+<status status="PASS" starttime="20231206 21:09:25.844" endtime="20231206 21:09:35.864"/>
 </kw>
-<kw name="Fechar Navegador" library="global" type="TEARDOWN">
-<kw name="Close Browser" library="SeleniumLibrary">
-<doc>Closes the current browser.</doc>
-<status status="PASS" starttime="20231206 16:26:45.384" endtime="20231206 16:26:47.504"/>
+<kw name="AND redefinir senha" library="RecuperarSenhaKey">
+<kw name="Sleep" library="BuiltIn">
+<arg>5</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20231206 21:09:40.873" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20231206 21:09:35.865" endtime="20231206 21:09:40.873"/>
 </kw>
-<status status="PASS" starttime="20231206 16:26:45.384" endtime="20231206 16:26:47.504"/>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>xpath=//input[@type='password']</arg>
+<arg>${senhaAlterarSenha}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20231206 21:09:40.874" level="INFO">Typing text '193746' into text field 'xpath=//input[@type='password']'.</msg>
+<status status="PASS" starttime="20231206 21:09:40.873" endtime="20231206 21:09:40.939"/>
 </kw>
-<status status="FAIL" starttime="20231206 16:26:32.699" endtime="20231206 16:26:47.505">No keyword with name 'THEN' found.</status>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>xpath=//button[@type="submit"]</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20231206 21:09:40.940" level="INFO">Clicking button 'xpath=//button[@type="submit"]'.</msg>
+<status status="PASS" starttime="20231206 21:09:40.939" endtime="20231206 21:09:40.988"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>5</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20231206 21:09:45.992" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20231206 21:09:40.988" endtime="20231206 21:09:45.992"/>
+</kw>
+<status status="PASS" starttime="20231206 21:09:35.864" endtime="20231206 21:09:45.992"/>
+</kw>
+<kw name="THEN sistema deve alterar senha do usuário" library="RecuperarSenhaKey">
+<kw name="Page Should Contain Element" library="SeleniumLibrary">
+<arg>xpath=//*[contains(text(), 'Password changed')]</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<msg timestamp="20231206 21:09:46.002" level="INFO">Current page contains element 'xpath=//*[contains(text(), 'Password changed')]'.</msg>
+<status status="PASS" starttime="20231206 21:09:45.993" endtime="20231206 21:09:46.002"/>
+</kw>
+<status status="PASS" starttime="20231206 21:09:45.992" endtime="20231206 21:09:46.003"/>
+</kw>
+<status status="PASS" starttime="20231206 21:09:10.494" endtime="20231206 21:09:46.003"/>
 </test>
-<status status="FAIL" starttime="20231206 16:26:32.298" endtime="20231206 16:26:47.507"/>
+<status status="PASS" starttime="20231206 21:09:10.261" endtime="20231206 21:09:46.004"/>
 </suite>
 <statistics>
 <total>
-<stat pass="0" fail="1" skip="0">All Tests</stat>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat pass="0" fail="1" skip="0" id="s1" name="LogoutFinalizarTest">LogoutFinalizarTest</stat>
+<stat pass="1" fail="0" skip="0" id="s1" name="RecuperarSenhaTest">RecuperarSenhaTest</stat>
 </suite>
 </statistics>
 <errors>
-<msg timestamp="20231206 16:26:32.687" level="ERROR">Error in file 'c:\Users\Alysson\Desktop\TestePrimeControl\Service\LogoutFinalizarKey.robot' on line 4: Resource setting requires value.</msg>
 </errors>
 </robot>

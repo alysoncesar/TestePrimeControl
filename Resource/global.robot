@@ -2,14 +2,15 @@
 Library           SeleniumLibrary
 Library           Collections
 Resource          ../Common/CriarContaLoginPath.robot
+Library           OperatingSystem
 
 *** Variables ***
 ${BROWSER}        Chrome
 ${BASE_URL}       https://challenge.primecontrol.com.br/
 
 #CRIAR CONTA
-${emailNovaConta}    teste3@gmail.com
-${senhaNovaConta}    123456
+${emailCriarConta}=    testealyson123@gmail.com    
+${senhaNovaConta}    123456789
 
 #LOGAR CONTA
 ${emailContaCriada}    alysoncesar99@gmail.com
@@ -28,7 +29,7 @@ ${pais}                    br
 
 *** Keywords ***
 Abrir Navegador
-    Open Browser    ${BASE_URL}    ${BROWSER}
+    Open Browser    ${BASE_URL}    ${BROWSER}    alias=prime
     Maximize Browser Window
     
 Fechar Navegador

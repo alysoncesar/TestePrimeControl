@@ -12,7 +12,7 @@ acessou pagina principal
 
 criar conta nova
     Click Element   ${btnNovaConta}   
-    input text      ${inputEmail}    ${emailNovaConta}
+    input text      ${inputEmail}    ${emailCriarConta}
     Input Text      ${inputSenha}    ${senhaNovaConta}
     Click Button    ${btnCriarConta}
 
@@ -27,15 +27,6 @@ logar conta com senha inválida
     input text      ${inputEmail}    ${emailContaCriada}
     Input Text      ${inputSenha}    ${senhaNovaConta}
     Click Button    ${btnAcessar}
-
-
-acessar menu esqueci minha senha
-    Click Element    ${btnEsqueciSenha}
-
-preencher email
-    Input Text       ${inputEmail}     ${emailContaCriada}
-    Sleep    1
-    Click Button    ${btnEnviar}
 
 sistema deve encaminhar a pagina logada
     Sleep    2

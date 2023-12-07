@@ -21,7 +21,3 @@ ${btnAcessar}           xpath=//button[text()="Acessar"]
 ${txtHome}              xpath=//h1[text()="Gestão de Clientes"]
 ${txtSenhaIncorreta}    xpath=//div[text()="E-mail ou senha inválida."] 
 
-
-#RESET DE SENHA
-${btnEsqueciSenha}      xpath=//a[@href="/app/resetsenha"]
-${btnEnviar}            xpath=//button[text()="Enviar"]

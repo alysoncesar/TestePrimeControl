@@ -2,7 +2,6 @@
 Resource    ../Service/CriarContaLoginKey.robot
 Test Setup    Abrir Navegador
 Test Teardown    Fechar Navegador
-
 *** Test Cases ***
 
 CT001 - Criar uma nova Conta com sucesso
@@ -24,10 +23,3 @@ CT004 - Validar Login com senha inválida
     GIVEN acessou pagina principal
     WHEN logar conta com senha inválida
     THEN sitema deve exibir mensagem de senha incorreta   
-
-CT011 - Recuperar senha de acesso
-    GIVEN acessar menu esqueci minha senha
-    WHEN enviar redefinição de email
-    AND acessar link de redefinição
-    AND redefinir senha
-    THEN sistema deve alterar senha do usuário
