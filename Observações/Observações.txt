@@ -1,0 +1,8 @@
+Print1: 
+É possível desmarcar a opção e enviar com o valor do checkbox vazio.
+
+Print2
+Não existe limite de caracteres e nem máscara, aonde é obrigado máscarar manualmente no CEP mas não no telefone, inconcistencia e falta de usabilidade
+
+Print3
+Embora seja obrigatório todos os campos preenchidos na criação, ao editar é possível deixar tudo vazio e salvar.
