@@ -28,7 +28,7 @@ ${btnSalvarCliente}            xpath=//button[@type='submit']
 
 #PESQUISA CLIENTE
 ${inputPesquisaCliente}        xpath=//input[@class='form-control inputSearch']
-${btnPesquisarCliente}            xpath=//button[@id='button-addon2']
+${btnPesquisarCliente}         xpath=//button[@id='button-addon2']
 ${nomePesquisaCliente}         xpath=//p[text()='${nomeCompleto}']
 ${emailPesquisaCliente}        xpath=//p[text()='${Email}']
 ${telefonePesquisaCliente}     xpath=//p[text()='${telefone}']
